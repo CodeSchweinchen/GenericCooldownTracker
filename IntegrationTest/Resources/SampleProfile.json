@@ -1,0 +1,34 @@
+{
+  "profiles": [
+    {
+      "name": "GenericProfile",
+      "activities": [
+        {
+          "type": "fixedIntervalLimitedUsesCooldown",
+          "name": "Heal Action",
+          "maxAttempts": 5,
+          "cooldownBetweenAttempts": 300,
+          "resetTime": "00:00"
+        },
+        {
+          "type": "userProvidedDurationCooldown",
+          "name": "Resource Gathering"
+        },
+        {
+          "type": "independentQueueCooldown",
+          "name": "Building Queue 1"
+        },
+        {
+          "type": "independentQueueCooldown",
+          "name": "Building Queue 2"
+        },
+        {
+          "type": "dailyCompletionTracker",
+          "name": "Dungeon Attempt",
+          "maxAttempts": 2,
+          "resetTime": "00:00"
+        }
+      ]
+    }
+  ]
+}

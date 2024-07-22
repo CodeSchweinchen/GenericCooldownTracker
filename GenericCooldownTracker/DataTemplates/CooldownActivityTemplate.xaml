@@ -1,0 +1,12 @@
+﻿<DataTemplate DataType="{x:Type local:CooldownActivityViewModel}"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:local="clr-namespace:GenericCooldownTrackerWpf.ViewModels">
+    <StackPanel>
+        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+        <TextBlock Text="{Binding EndTime, StringFormat='Ends at: {0}'}"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="100" Margin="5" Text="{Binding DurationInput, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="hh:mm:ss"/>
+            <Button Content="Set" Command="{Binding SetDurationCommand}" Margin="5"/>
+        </StackPanel>
+    </StackPanel>
+</DataTemplate>
