@@ -1,12 +1,25 @@
 ﻿<DataTemplate DataType="{x:Type local:CooldownActivityViewModel}"
               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:local="clr-namespace:GenericCooldownTrackerWpf">
     <StackPanel>
-        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-        <TextBlock Text="{Binding EndTime, StringFormat='Ends at: {0}'}"/>
-        <StackPanel Orientation="Horizontal">
-            <TextBox Width="100" Margin="5" Text="{Binding DurationInput, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="hh:mm:ss"/>
-            <Button Content="Set" Command="{Binding SetDurationCommand}" Margin="5"/>
+        <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="0,0,0,5"/>
+        <TextBlock Text="{Binding EndTime, StringFormat='Ends at: {0}'}" Margin="0,0,0,5"/>
+        <TextBlock Text="{Binding Attempts, StringFormat='Remaining Attempts: {0}'}" Margin="0,0,0,5"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Tage" />
+                <TextBox Width="50" Text="{Binding DaysInput, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Std" />
+                <TextBox Width="50" Text="{Binding HoursInput, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Min" />
+                <TextBox Width="50" Text="{Binding MinutesInput, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            <Button Content="Set" Command="{Binding SetDurationCommand}" VerticalAlignment="Bottom" Margin="5"/>
         </StackPanel>
     </StackPanel>
 </DataTemplate>

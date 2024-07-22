@@ -1,8 +1,9 @@
 ﻿<DataTemplate DataType="{x:Type local:DailyActivityViewModel}"
               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
               xmlns:local="clr-namespace:GenericCooldownTrackerWpf">
     <StackPanel>
-        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-        <TextBlock Text="{Binding CurrentAttempts, StringFormat='Completions: {0}/{Binding MaxAttempts}'}"/>
+        <TextBlock Text="{Binding Name}" FontWeight="Bold" Margin="0,0,0,5"/>
+        <TextBlock Text="{Binding Path=CurrentAttempts, StringFormat='Completions: {0}/{1}', ConverterParameter={Binding Path=MaxAttempts}}"/>
     </StackPanel>
 </DataTemplate>

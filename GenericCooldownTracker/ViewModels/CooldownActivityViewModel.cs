@@ -1,14 +1,15 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 
 namespace GenericCooldownTrackerWpf
 {
     public class CooldownActivityViewModel : ActivityBaseViewModel
     {
         public int? MaxAttempts { get; set; }
+        public int Attempts { get; set; }
         public int? CooldownDuration { get; set; }
         public bool UserProvidedDuration { get; set; }
         public bool ResetOnCollection { get; set; }
-        public int Attempts { get; set; }
         public DateTime ResetTime { get; set; }
 
         private string _durationInput;
@@ -18,6 +19,40 @@ namespace GenericCooldownTrackerWpf
             set
             {
                 _durationInput = value;
+                OnPropertyChanged();
+            }
+        }
+
+        // Neue Properties für Tage, Stunden und Minuten
+        private int _daysInput;
+        public int DaysInput
+        {
+            get => _daysInput;
+            set
+            {
+                _daysInput = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _hoursInput;
+        public int HoursInput
+        {
+            get => _hoursInput;
+            set
+            {
+                _hoursInput = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _minutesInput;
+        public int MinutesInput
+        {
+            get => _minutesInput;
+            set
+            {
+                _minutesInput = value;
                 OnPropertyChanged();
             }
         }
@@ -32,18 +67,18 @@ namespace GenericCooldownTrackerWpf
             UserProvidedDuration = userProvidedDuration;
             ResetOnCollection = resetOnCollection;
             ResetTime = resetTime;
+            Attempts = MaxAttempts ?? 0;
             SetDurationCommand = new RelayCommand(SetDuration);
         }
 
         private void SetDuration()
         {
-            var parts = DurationInput.Split(':');
-            if (parts.Length == 3 && int.TryParse(parts[0], out int hours) && int.TryParse(parts[1], out int minutes) && int.TryParse(parts[2], out int seconds))
-            {
-                int totalSeconds = hours * 3600 + minutes * 60 + seconds;
-                EndTime = DateTime.Now.AddSeconds(totalSeconds);
-                OnPropertyChanged(nameof(EndTime));
-            }
+            // Anpassung der Methode, um die neuen Properties zu nutzen
+            int totalSeconds = DaysInput * 86400 + HoursInput * 3600 + MinutesInput * 60;
+            EndTime = DateTime.Now.AddSeconds(totalSeconds);
+            Attempts = (Attempts > 0) ? Attempts - 1 : 0;
+            OnPropertyChanged(nameof(EndTime));
+            OnPropertyChanged(nameof(Attempts));
         }
     }
 }
