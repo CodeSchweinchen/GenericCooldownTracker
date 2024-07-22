@@ -1,7 +1,6 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
-namespace GenericCooldownTrackerWpf.ViewModels
+namespace GenericCooldownTrackerWpf
 {
     public class CooldownActivityViewModel : ActivityBaseViewModel
     {

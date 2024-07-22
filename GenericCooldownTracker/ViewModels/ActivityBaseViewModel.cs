@@ -1,8 +1,7 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace GenericCooldownTrackerWpf.ViewModels
+namespace GenericCooldownTrackerWpf
 {
     public abstract class ActivityBaseViewModel : INotifyPropertyChanged
     {

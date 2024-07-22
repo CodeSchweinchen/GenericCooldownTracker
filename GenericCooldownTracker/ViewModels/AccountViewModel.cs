@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace GenericCooldownTrackerWpf.ViewModels
+namespace GenericCooldownTrackerWpf
 {
     public class AccountViewModel
     {

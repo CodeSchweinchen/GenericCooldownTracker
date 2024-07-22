@@ -1,6 +1,5 @@
 ﻿using CooldownTrackerLib.Contracts;
 using CooldownTrackerLib.Services;
-using GenericCooldownTrackerWpf.ViewModels;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
